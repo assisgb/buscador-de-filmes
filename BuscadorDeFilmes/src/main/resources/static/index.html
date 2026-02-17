@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscador de Filmes</title>
+</head>
+<body>
+<h1>Buscar Filme</h1>
+
+<input type="text" id="inputFilme" placeholder="Digite o nome do filme...">
+<button onclick="buscarFilme()">Pesquisar</button>
+
+<div id="resultado" style="margin-top: 20px; border: 1px solid #ccc; padding: 10px;">
+    Aguardando busca...
+</div>
+
+<script>
+    async function buscarFilme() {
+        const nome = document.getElementById('inputFilme').value;
+        const divResultado = document.getElementById('resultado');
+
+        divResultado.innerText = "Buscando...";
+
+        try {
+            // Chama o seu @RestController (passando o parâmetro na URL)
+            const response = await fetch(`http://localhost:8080/teste/titulo?titulo=${nome}`);
+
+            if (!response.ok) throw new Error("Filme não encontrado");
+
+            const filme = await response.json();
+
+            // Monta o HTML com os dados que vieram do seu objeto Titulo (Back-end)
+            divResultado.innerHTML = `
+                <h2>${filme.Title}</h2>
+                <p>Ano: ${filme.Released}</p>
+                <p>Sinopse: ${filme.Plot}</p>
+                <img src="${filme.Poster}" alt="Pôster do filme" style="width: 200px; border-radius: 8px;">
+            `;
+        } catch (error) {
+            divResultado.innerText = "Erro: " + error.message;
+        }
+    }
+</script>
+</body>
+
+</html>
