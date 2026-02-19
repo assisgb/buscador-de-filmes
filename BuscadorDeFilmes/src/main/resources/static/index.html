@@ -23,13 +23,14 @@
 
         try {
             // Chama o seu @RestController (passando o parâmetro na URL)
-            const response = await fetch(`http://localhost:8080/teste/titulo?titulo=${nome}`);
+            const response = await fetch(`http://localhost:8080/teste?titulo=${nome}`);
 
             if (!response.ok) throw new Error("Filme não encontrado");
 
             const filme = await response.json();
 
             // Monta o HTML com os dados que vieram do seu objeto Titulo (Back-end)
+
             divResultado.innerHTML = `
                 <h2>${filme.Title}</h2>
                 <p>Ano: ${filme.Released}</p>

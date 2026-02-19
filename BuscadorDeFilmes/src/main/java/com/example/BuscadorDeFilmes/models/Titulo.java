@@ -1,9 +1,10 @@
 package com.example.BuscadorDeFilmes.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public abstract class Titulo {
+public class Titulo {
 
     @JsonProperty("Title")
     private String nome;
@@ -31,6 +32,41 @@ public abstract class Titulo {
 
     @JsonProperty("Poster")
     private String poster;
+
+    @JsonProperty("totalSeasons")
+    private String totalTemporadas;
+
+    @JsonIgnore
+    private boolean isSeries;
+
+    private void isSeries(){
+        if(this.totalTemporadas != "N/A"){this.isSeries = false;}
+        else{this.isSeries = true;}
+
+    }
+
+    public String getTotalTemporadas() {
+        return totalTemporadas;
+    }
+
+    public void setTotalTemporadas(String totalTemporadas) {
+        this.totalTemporadas = totalTemporadas;
+    }
+    @JsonIgnore
+    public Titulo(String nome, String lancamento, String genero, String diretor, String escritor, String atores_principais, String trama, String avaliacao_imdb, String poster, String totalTemporadas) {
+        this.nome = nome;
+        this.lancamento = lancamento;
+        this.genero = genero;
+        this.diretor = diretor;
+        this.escritor = escritor;
+        this.atores_principais = atores_principais;
+        this.trama = trama;
+        this.avaliacao_imdb = avaliacao_imdb;
+        this.poster = poster;
+        this.totalTemporadas = totalTemporadas;
+        isSeries();
+    }
+    public Titulo(){}
 
     public String getNome() {
         return nome;
