@@ -6,9 +6,9 @@
 
 ## 💻 Sobre o projeto
 
-Este projeto foi desenvolvido para explorar os conceitos de **programação reativa** no ecossistema Java. O objetivo principal é permitir que o usuário busque informações detalhadas sobre filmes através de uma interface simples, onde o back-end atua como um mediador inteligente que consome APIs externas de forma não-bloqueante.
+Este projeto foi desenvolvido para explorar os conceitos de **programação orientada a objeto**,**programação reativa** e **consumo de API** no ecossistema Java. O objetivo principal é permitir que o usuário busque informações detalhadas sobre filmes através de uma interface simples, onde o back-end atua como um mediador inteligente que consome APIs externas de forma não-bloqueante.
 
-Desenvolvi esta aplicação para entender a aplicação prática de fluxos reativos (`Mono`), garantindo que o thread do servidor não fique bloqueado enquanto espera a resposta de APIs externas, resultando em uma aplicação mais performática e escalável.
+Desenvolvi esta aplicação para entender a aplicação prática de fluxos reativos (`Mono`), consumo de API e o uso do Spring Framework, garantindo que o thread do servidor não fique bloqueado enquanto espera a resposta de APIs externas, resultando em uma aplicação mais performática e escalável.
 
 ---
 
